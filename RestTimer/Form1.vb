@@ -14,16 +14,18 @@ Public Class Form1
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If Status = "Stopped" Then
+            maxTime = TextBox1.Text * 60
             count = 0
             Status = "Started"
             ProgressBar1.Maximum = maxTime
             Timer1.Start()
             'MsgBox(maxTime)
             Button1.Text = "Stop"
+            TextBox1.Enabled = False
             GoTo EndChange
         End If
         If Status = "Started" Then
-
+            TextBox1.Enabled = True
             Status = "Stopped"
             Timer1.Stop()
             count = 0
@@ -53,7 +55,7 @@ EndChange:
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
-        maxTime = TextBox1.Text * 60
+
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
